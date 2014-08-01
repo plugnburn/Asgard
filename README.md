@@ -8,6 +8,10 @@ To rebuild the image, remove `work` and `out` dirs (`sudo rm -rf work out`) and 
 
 *Note: The requirement to run the script as root is to make sure all the permissions are intact inside the built iso image.*
 
+Dependencies
+------------
+The image will build successfully on a recent Arch Linux version with `archiso` package installed. Other systems and configurations may work, but are not tested yet.
+
 Asgard-specific DWB commands
 ---------------------------------------------
 - `:run <cmd>` - run arbitrary <cmd> command and return the last string of its stdout to dwb's status bar
