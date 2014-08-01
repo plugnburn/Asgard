@@ -1,0 +1,43 @@
+#!/bin/bash
+#Usage: uniconn [ethernet|wireless] [none|wep|wpa] [ssid] [password]
+CONNTYPE=$1
+SECURITY=$2
+SSID=$3
+PASS=$4
+IFACES=$(ls /sys/class/net|grep -v lo)
+for ifname in $IFACES; do
+    if [[ -e "/sys/class/net/$ifname/wireless" ]]; then WIRELESS_IFACE=$ifname;
+    else WIRED_IFACE=$ifname;
+    fi
+done
+
+if [ $CONNTYPE == "wireless" ]; then
+IFACE=$WIRELESS_IFACE;
+else IFACE=$WIRED_IFACE;
+fi
+
+if [ "`systemctl is-active dhcpcd@$WIRED_IFACE`" != "active" ]; then
+
+rm -f /etc/netctl/autogen*
+PROFNAME="autogen$RANDOM"
+PROF=/etc/netctl/$PROFNAME
+touch $PROF
+echo "Description='Connection "$PROFNAME"'">>$PROF
+echo "Interface=$IFACE">>$PROF
+echo "Connection=$CONNTYPE">>$PROF
+if [ $CONNTYPE == "wireless" ]; then
+echo "Security=$SECURITY">>$PROF
+echo "Key='""$PASS""'">>$PROF
+echo "ESSID='""$SSID""'">>$PROF
+echo "Hidden=yes">>$PROF
+fi
+echo "IP=dhcp">>$PROF
+netctl stop-all
+netctl start $PROFNAME
+echo -n "Connected to $CONNTYPE interface $IFACE"
+if [ $CONNTYPE == "wireless" ]; then
+echo -n ", SSID $SSID"
+fi
+
+else echo "Connection on the wired interface $IFACE already established"
+fi

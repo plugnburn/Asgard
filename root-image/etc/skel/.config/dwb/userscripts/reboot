@@ -1,0 +1,4 @@
+#!/bin/bash
+RES="Rebooting the system"
+echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}
+sudo reboot

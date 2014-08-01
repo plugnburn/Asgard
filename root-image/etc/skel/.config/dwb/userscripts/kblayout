@@ -1,0 +1,5 @@
+#!/bin/bash
+read LAYOUTLIST TOGGLER <<< "${DWB_ARGUMENT}"
+[[ -z $TOGGLER ]] && TOGGLER="alt_shift"
+RES=$(setxkbmap -layout $LAYOUTLIST -option grp:${TOGGLER}_toggle -option grp_led:scroll)
+echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}

@@ -1,0 +1,7 @@
+#!/bin/bash
+netctl stop-all
+IFACES=$(ls /sys/class/net)
+for iface in $IFACES; do
+    systemctl stop dhcpcd@$iface      
+done
+

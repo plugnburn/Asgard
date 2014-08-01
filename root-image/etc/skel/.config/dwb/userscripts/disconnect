@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo /opt/asgard/unidisconn
+RES="All network interfaces are disconnected"
+echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}

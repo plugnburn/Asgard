@@ -1,0 +1,4 @@
+#!/bin/bash
+RES="Running volume control app, press ESC to exit"
+echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}
+xterm -e alsamixer

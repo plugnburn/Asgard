@@ -1,0 +1,3 @@
+#!/bin/bash
+RES=$(scrot ${DWB_ARGUMENT})
+echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}

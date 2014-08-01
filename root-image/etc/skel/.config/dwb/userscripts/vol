@@ -1,0 +1,5 @@
+#!/bin/bash
+VOL="${DWB_ARGUMENT}%"
+amixer set Master $VOL
+RES="Volume set to $VOL"
+echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}

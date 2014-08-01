@@ -1,0 +1,4 @@
+#!/bin/bash
+CMD=${DWB_ARGUMENT}
+RES=$($CMD)
+echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}

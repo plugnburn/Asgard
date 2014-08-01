@@ -1,0 +1,4 @@
+#!/bin/bash
+CONN=${DWB_ARGUMENT}
+RES=$(sudo /opt/asgard/uniconn $CONN)
+echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}
