@@ -3,7 +3,9 @@ Asgard project
 
 Overview
 --------
-[coming soon]
+This repo holds an `archiso` profile for Asgard. To build Asgard, clone the repo, go to the directory and run `sudo ./build.sh -v`. After the build completes, the hybrid ISO image will appear in the `out` directory.
+
+*Note: The requirement to run the script as root is to make sure all the permissions are intact inside the built iso image.*
 
 Asgard-specific DWB commands
 ---------------------------------------------
