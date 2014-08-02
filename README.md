@@ -13,7 +13,7 @@ To rebuild the image, remove `work` and `out` dirs (`sudo rm -rf work out`) and 
 
 Image format
 ------------
-Asgard bootable images are hybrid ISO imagesthat can be burned onto CD/DVD discs and a flash drive (as the main target). 
+Asgard bootable images are hybrid ISO images that can be burned onto CD/DVD discs and a flash drive (as the main target). 
 To write the image onto a flash drive, use `dd` command: `dd if=/path/to/asgard.iso of=/dev/<your_drive> bs=2M`, where your_drive is the name of your flash drive device (`sdb`, `sdc` etc)
 
 Dependencies
