@@ -1,0 +1,6 @@
+#!/bin/bash
+#Asgard bytebeat player
+F=${DWB_ARGUMENT}
+[ -z "$F" ] && RES="Stopping all instances of wave player" || RES="Playing bytebeat expression $F"
+echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}
+[ -z "$F" ] && killall aplay || echo "main(){unsigned int t=0;for(;;t++)putchar($F);}"|tcc -run -|aplay>/dev/null 2>&1
