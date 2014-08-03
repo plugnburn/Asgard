@@ -35,3 +35,5 @@ Asgard-specific DWB commands
 - `:reboot` - reboot the system
 - `:poweroff` - power the system off
 - `:tweak-asgard-style` - run an external editor to tweak global CSS rules (`/opt/asgard/asgard-style.css`), afterwards you can restart dwb with `:q` and see the changes (note that your changes will be lost after reboot, if you're on a live medium)
+- `:bb <expression>` - play a [Bytebeat] (http://canonical.org/~kragen/bytebeat/) expression (pure C expression with `t` as the timestamp variable, unsigned 8-bit PCM, 8 KHz) until it will be stopped with `:bb` command without parameters.
+Example: `:bb t|t>>7` plays a Sierpinski harmony, `:bb ((t<<1)^((t<<1)+(t>>7)&t>>12))|t>>(4-(1^7&(t>>19)))|t>>7` plays the famous "Crowd" composition by Kragen.
