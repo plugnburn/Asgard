@@ -32,7 +32,7 @@ crda
 curl
 dnsutils
 ethtool
-gnu-netcat
+socat
 gpm
 haveged
 intel-ucode
@@ -71,4 +71,4 @@ gst-plugins-ugly
 flashplugin
 tcc
 sox
-
+aria2
