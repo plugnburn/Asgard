@@ -10,6 +10,7 @@ ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 usermod -s /bin/bash root
 cp -aT /etc/skel/ /root/
 cp -aT /root/os-release /lib/os-release
+chmod 700 /root
 
 useradd -m -p "" -g users -G "adm,audio,floppy,log,network,rfkill,scanner,storage,optical,power,wheel" -s /bin/bash asgard
 
