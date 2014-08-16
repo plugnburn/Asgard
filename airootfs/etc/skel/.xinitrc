@@ -6,4 +6,5 @@ SETDIR=~/.config/dwb
 SETFILE=$SETDIR/settings
 echo "default-width=$ROOTW">>$SETFILE
 echo "default-height=$ROOTH">>$SETFILE
+tilda &
 while true;do dwb -S;done

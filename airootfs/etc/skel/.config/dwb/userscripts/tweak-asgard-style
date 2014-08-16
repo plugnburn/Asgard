@@ -1,4 +1,7 @@
 #!/bin/bash
 RES="Editing asgard-style CSS"
 echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}
-xterm -e sudo nano /opt/asgard/asgard-style.css
+ROOTSZ=$(xwininfo -root|grep geometry|grep -Po \\d+x\\d+)
+ROOTW=$(echo $ROOTSZ|cut -d x -f 1)
+ROOTH=$(echo $ROOTSZ|cut -d x -f 2)
+xterm -geometry $ROOTWx$ROOTH -e sudo nano /opt/asgard/asgard-style.css
