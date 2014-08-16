@@ -34,6 +34,11 @@ Asgard-specific DWB commands
 - `:procview` - run an external process/system load viewer application (HTop at the moment)
 - `:reboot` - reboot the system
 - `:poweroff` - power the system off
-- `:tweak-asgard-style` - run an external editor to tweak global CSS rules (`/opt/asgard/asgard-style.css`), afterwards you can restart dwb with `:q` and see the changes (note that your changes will be lost after reboot, if you're on a live medium)
 - `:bb <expression>` - play a [Bytebeat] (http://canonical.org/~kragen/bytebeat/) expression (pure C expression with `t` as the timestamp variable, unsigned 8-bit PCM, 8 KHz) until it is stopped with `:bb` command without parameters.
 Example: `:bb t|t>>7` plays a Sierpinski harmony, `:bb ((t<<1)^((t<<1)+(t>>7)&t>>12))|t>>(4-(1^7&(t>>19)))|t>>7` plays the famous "Crowd" composition by Kragen.
+
+Terminal mode
+--------------
+Starting with RC2, Asgard features a full-fledged terminal emulator that can be called and hidden via F12 keybinding.
+In this terminal, you can use Bash shell, `dvtm` terminal multiplexer and Nano text editor that supports syntax highlighting for all popular programming and scripting languages.
+Despite the main orientation of Asgard is, and will remain, the browser-based experience, the terminal may serve as an additional feature for more general purpose use.
