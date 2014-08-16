@@ -1,7 +1,7 @@
 tilda_config_version = "1.1.12"
 # image = ""
 # command = ""
-font = "Droid Sans Mono 9"
+font = "Droid Sans Mono 10"
 key = "F12"
 addtab_key = "<Shift><Control>t"
 fullscreen_key = "F11"
@@ -29,8 +29,6 @@ background_color = "white"
 web_browser = "x-www-browser"
 word_chars = "-A-Za-z0-9,./?%&#:_"
 lines = 4096
-max_width = 1360
-max_height = 768
 min_width = 1
 min_height = 1
 transparency = 50
