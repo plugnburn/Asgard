@@ -5,7 +5,7 @@ Overview
 --------
 This repo holds an `archiso` profile for Asgard, as well as the recent ready RC images. 
 To download a ready RC image, go to [Releases] (https://github.com/plugnburn/Asgard/releases). 
-To build the bleeding-edge hybrid image of Asgard without waiting for the next RC or release, clone the repo, go to the directory and run `sudo ./build.sh -v`. 
+To build the bleeding-edge hybrid image of Asgard without waiting for the next RC or release, clone the repo, go to the directory, run `sudo ./dwbbuild` and `sudo ./build.sh -v`. 
 After the build completes, the hybrid ISO image will appear in the `out` directory.
 To rebuild the image, remove `work` and `out` dirs (`sudo rm -rf work out`) and run `sudo ./build.sh -v` again.
 
