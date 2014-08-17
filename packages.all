@@ -73,4 +73,5 @@ aria2
 tilda
 dvtm
 gnome-themes-standard
-pacman
+libva-vdpau-driver
+libva-intel-driver
