@@ -22,3 +22,4 @@ sed -i 's/#\(Storage=\)auto/\1volatile/' /etc/systemd/journald.conf
 systemctl set-default multi-user.target
 
 pacman -Rs gst-vaapi
+pacman -Rs pacman
