@@ -1,4 +1,4 @@
 #!/bin/bash
-RES="Stopping MP3 player"
+RES="Stopping media player"
 echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}
 killall mpv
