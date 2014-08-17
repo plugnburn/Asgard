@@ -4,19 +4,20 @@ SCRIPTDIR="$(pwd)"
 popd > /dev/null
 WDIR="${SCRIPTDIR}/dwb-build"
 OUTDIR="${SCRIPTDIR}/dwb-out"
+TGZNAME="dwb-gtk3-git"
 rm -rf $WDIR $OUTDIR
-TARBALL="https://aur.archlinux.org/packages/dw/dwb-gtk3/dwb-gtk3.tar.gz"
+TARBALL="https://aur.archlinux.org/packages/dw/${TGZNAME}/${TGZNAME}.tar.gz"
 mkdir -p $WDIR
 cd $WDIR
 wget $TARBALL
-tar xzf dwb-gtk3.tar.gz
-cd dwb-gtk3
+tar xzf ${TGZNAME}.tar.gz
+cd ${TGZNAME}
 makepkg --asroot
 mkdir -p $OUTDIR
-mv dwb-gtk3*.tar.xz "${OUTDIR}/dwb-gtk3.tar.xz"
+mv dwb-gtk3*.tar.xz "${OUTDIR}/${TGZNAME}.tar.xz"
 cd $SCRIPTDIR
 rm -rf $WDIR
-repo-add "${OUTDIR}/dwb-repo.db.tar.gz" "${OUTDIR}/dwb-gtk3.tar.xz"
+repo-add "${OUTDIR}/dwb-repo.db.tar.gz" "${OUTDIR}/${TGZNAME}.tar.xz"
 PACMANCONF=${SCRIPTDIR}/pacman.conf
 sed -i '$ d' $PACMANCONF
 echo -n "Server = file://${SCRIPTDIR}/dwb-out">>$PACMANCONF

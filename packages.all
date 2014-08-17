@@ -65,7 +65,7 @@ gst-plugins-base
 gst-plugins-good
 gst-plugins-bad
 gst-plugins-ugly
-dwb-gtk3
+dwb-gtk3-git
 mpv
 tcc
 sox
