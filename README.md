@@ -29,8 +29,8 @@ Asgard-specific DWB commands
 - `:volctl` - run the external volume control application (AlsaMixer at the moment)
 - `:vol <N>` - set master volume to N percent without running external app, e.g. `vol 70` sets to 70%, `vol 0` mutes
 - `:scrot` - run a screenshot program (you can pass the same parameters as the ones to the native `scrot` utility)
-- `:playmp3 <file|uri>` - play a local file or network stream URI in MPEG format
-- `:stopmp3` - stop any player instances that were run with `:playmp3`
+- `:playmedia <file|uri>`- play a local file or network stream URI (*Note: in Asgard RC2 and older, the command was called `:playmp3` and could handle only MP3 audio files and streams*)
+- `:stopmedia` - stop any player instances that were run with `:playmedia` (*Note: in Asgard RC2 and older, the command was called `:stopmp3`*)
 - `:procview` - run an external process/system load viewer application (HTop at the moment)
 - `:reboot` - reboot the system
 - `:poweroff` - power the system off
