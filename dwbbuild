@@ -4,8 +4,10 @@ SCRIPTDIR="$(pwd)"
 popd > /dev/null
 WDIR="${SCRIPTDIR}/dwb-build"
 OUTDIR="${SCRIPTDIR}/dwb-out"
-TGZNAME="dwb-gtk3-git"
+PATCHEDDIR="${SCRIPTDIR}/patched"
 rm -rf $WDIR $OUTDIR
+#prepare dwb-gtk3 package
+TGZNAME="dwb-gtk3-git"
 TARBALL="https://aur.archlinux.org/packages/dw/${TGZNAME}/${TGZNAME}.tar.gz"
 mkdir -p $WDIR
 cd $WDIR
@@ -18,6 +20,8 @@ mv dwb-gtk3*.tar.xz "${OUTDIR}/${TGZNAME}.tar.xz"
 cd $SCRIPTDIR
 rm -rf $WDIR
 repo-add "${OUTDIR}/dwb-repo.db.tar.gz" "${OUTDIR}/${TGZNAME}.tar.xz"
+#add patched cairo-git package
+repo-add "${OUTDIR}/dwb-repo.db.tar.gz" "${PATCHEDDIR}/cairo/cairo-git.tar.xz"
 PACMANCONF=${SCRIPTDIR}/pacman.conf
 sed -i '$ d' $PACMANCONF
 echo -n "Server = file://${SCRIPTDIR}/dwb-out">>$PACMANCONF

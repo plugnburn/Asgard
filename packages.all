@@ -67,6 +67,7 @@ gst-plugins-bad
 gst-plugins-ugly
 libva-vdpau-driver
 libva-intel-driver
+cairo-git
 dwb-gtk3-git
 mpv
 tcc
