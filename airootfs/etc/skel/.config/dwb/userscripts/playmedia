@@ -2,4 +2,4 @@
 TRACK="${DWB_ARGUMENT}"
 RES="Playing $TRACK"
 echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}
-mpg123 $TRACK
+mpv --terminal=no --fs $TRACK

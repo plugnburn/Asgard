@@ -58,7 +58,6 @@ xf86-video-intel
 xf86-video-nouveau
 xf86-video-ati
 scrot
-mpg123
 alsa-utils
 alsa-plugins
 xterm
@@ -68,11 +67,10 @@ gst-plugins-base
 gst-plugins-good
 gst-plugins-bad
 gst-plugins-ugly
-mplayer
+mpv
 flashplugin
 tcc
 sox
 aria2
 tilda
 dvtm
-
