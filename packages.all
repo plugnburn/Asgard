@@ -47,7 +47,6 @@ wget
 wireless_tools
 wpa_actiond
 zd1211-firmware
-dwb
 xorg-server
 xorg-xinit
 xorg-utils
@@ -62,13 +61,12 @@ alsa-utils
 alsa-plugins
 xterm
 htop
-gtk-engines
+dwb-gtk3
 gst-plugins-base
 gst-plugins-good
 gst-plugins-bad
 gst-plugins-ugly
 mpv
-flashplugin
 tcc
 sox
 aria2
