@@ -65,6 +65,8 @@ gst-plugins-base
 gst-plugins-good
 gst-plugins-bad
 gst-plugins-ugly
+libva-vdpau-driver
+libva-intel-driver
 dwb-gtk3-git
 mpv
 tcc
@@ -73,5 +75,4 @@ aria2
 tilda
 dvtm
 gnome-themes-standard
-libva-vdpau-driver
-libva-intel-driver
+gnome-icon-theme
