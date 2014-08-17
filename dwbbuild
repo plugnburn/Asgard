@@ -21,7 +21,8 @@ cd $SCRIPTDIR
 rm -rf $WDIR
 repo-add "${OUTDIR}/dwb-repo.db.tar.gz" "${OUTDIR}/${TGZNAME}.tar.xz"
 #add patched cairo-git package
-repo-add "${OUTDIR}/dwb-repo.db.tar.gz" "${PATCHEDDIR}/cairo/cairo-git.tar.xz"
+cp "${PATCHEDDIR}/cairo/cairo-git.tar.xz" "${OUTDIR}/cairo-git.tar.xz"
+repo-add "${OUTDIR}/dwb-repo.db.tar.gz" "${OUTDIR}/cairo-git.tar.xz"
 PACMANCONF=${SCRIPTDIR}/pacman.conf
 sed -i '$ d' $PACMANCONF
 echo -n "Server = file://${SCRIPTDIR}/dwb-out">>$PACMANCONF
