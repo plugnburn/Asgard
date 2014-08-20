@@ -1,0 +1,54 @@
+#!/bin/bash
+PLAYER="mpg123 --utf8 --long-tag"
+VMPID="/tmp/vmusic_mainpid"
+PLAYERPID="/tmp/vmusic_playerpid"
+VMTRACK="/tmp/vmusic_trackurl"
+VMINFO="/tmp/vmusic_trackinfo"
+fetch() {
+	ACCESS_TOKEN='18b30afd188b98fbfb96bb06c0ffe3173226efb97652b08b5db6d16c7364502f90d1f0b1297a1999a7260'
+	ENDPOINT="https://api.vk.com/method/audio.search"
+	URLLIST=$(curl -s -G --data-urlencode "q=${@// /+}" -d "access_token=${ACCESS_TOKEN}&count=200" $ENDPOINT|grep -Po '"url":".+?"'|grep -Poi '(?<=:")http.+(?=\?)')
+	for url in $URLLIST; do echo $(eval "echo $url");done
+}
+case "$1" in
+play)
+	[ -e $VMPID ] && $0 stop
+	echo "Playing the tracks for \"$2\" in VMusic..."
+	TRACKS=$(fetch "$2")
+	for track in $TRACKS; do
+		echo $track>$VMTRACK
+		$PLAYER $track > $VMINFO 2>&1 &
+		echo $!>$PLAYERPID
+		wait $!
+	done </dev/null >/dev/null 2>&1 &
+	disown -a
+	echo $!>$VMPID
+	;;
+skip)
+	echo "Skipping current track..."
+	kill -9 $(<$PLAYERPID)
+	;;
+stop)
+	kill -9 $(<$VMPID)
+	kill -9 $(<$PLAYERPID)
+	rm -f $VMPID $PLAYERPID $VMTRACK $VMINFO
+	echo "Stopped VMusic"
+	;;
+info)
+	RAWINFO=$(<$VMINFO)
+	TITLE=$(echo "$RAWINFO"|grep Title|grep -Po '(?<=:\s).*')
+	ARTIST=$(echo "$RAWINFO"|grep Artist|grep -Po '(?<=:\s).*')
+	[ -z "$ARTIST" ] && [ -z "$TITLE" ] && TRACKINFO="" || TRACKINFO="$ARTIST - $TITLE"
+	echo ${TRACKINFO}
+	;;
+dl)
+	[ -z $2 ] && DLDIR=~ || DLDIR="$2"
+	echo "Downloading current track to ${DLDIR}..."
+	cd $DLDIR
+	CURTRACK="$($0 info)"
+	[ -z "$CURTRACK" ] && curl -s -O $(<$VMTRACK) || curl -s -o "${CURTRACK}.mp3" $(<$VMTRACK)
+	;;
+*)
+	echo "Usage: $0 {play|skip|stop|info|dl}"
+	exit 1
+esac

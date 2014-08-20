@@ -20,3 +20,5 @@ chmod 440 /etc/sudoers.d/g_wheel
 sed -i 's/#\(Storage=\)auto/\1volatile/' /etc/systemd/journald.conf
 
 systemctl set-default multi-user.target
+
+ln -s /opt/asgard/vmusic /usr/bin/vmusic
