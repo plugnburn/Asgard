@@ -35,6 +35,7 @@ Asgard-specific DWB commands
 - `:reboot` - reboot the system
 - `:poweroff` - power the system off
 - `:bb <expression>` - play a [Bytebeat] (http://canonical.org/~kragen/bytebeat/) expression (pure C expression with `t` as the timestamp variable, unsigned 8-bit PCM, 8 KHz) until it is stopped with `:bb` command without parameters.
+- `:vmusic` - find, play and download music using VK network. This command is a front-end to the [VMusic] (https://gist.github.com/plugnburn/91b79bd4c1400a272b0e) command-line utility aimed at the same purpose.
 Example: `:bb t|t>>7` plays a Sierpinski harmony, `:bb ((t<<1)^((t<<1)+(t>>7)&t>>12))|t>>(4-(1^7&(t>>19)))|t>>7` plays the famous "Crowd" composition by Kragen.
 
 Terminal mode
