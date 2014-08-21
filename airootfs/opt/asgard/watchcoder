@@ -1,0 +1,26 @@
+#!/bin/bash
+case "$1" in
+num2watch)
+        [ -z "$2" ] && echo "Specify the number to encode" && exit 1
+	NUM=$2
+	SWDABS=$(($NUM / 1440))
+        ALMABS=$(($NUM % 1440))
+	SWDMIN=$(($SWDABS / 60))
+	SWDSEC=$(($SWDABS % 60))
+	ALMMIN=$(($ALMABS / 60))
+	ALMSEC=$(($ALMABS % 60))
+	printf "Alarm: %02d:%02d, stopwatch: %02d:%02d\n" $ALMMIN $ALMSEC $SWDMIN $SWDSEC
+	;;
+watch2num)
+	[ -z "$2" ] && echo "Specify alarm display in hh:mm format" && exit 1
+        [ -z "$3" ] && echo "Specify stopwatch display in hh:mm format" && exit 1
+	ALM=(${2//:/ })
+	SWD=(${3//:/ })
+	ALMSEC=$((${ALM[0]} * 60 + ${ALM[1]}))
+	SWDSEC=$((${SWD[0]} * 60 + ${SWD[1]}))
+	echo $(($SWDSEC * 1440 + $ALMSEC))
+	;;
+*)
+	echo "Usage $0 {num2watch <number>|watch2num <alarm> <stopwatch>}"
+	exit 1
+esac

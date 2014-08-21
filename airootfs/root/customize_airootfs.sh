@@ -22,3 +22,4 @@ sed -i 's/#\(Storage=\)auto/\1volatile/' /etc/systemd/journald.conf
 systemctl set-default multi-user.target
 
 ln -s /opt/asgard/vmusic /usr/bin/vmusic
+ln -s /opt/asgard/watchcoder /usr/bin/watchcoder
