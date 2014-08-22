@@ -47,6 +47,16 @@ wget
 wireless_tools
 wpa_actiond
 zd1211-firmware
+dosfstools
+btrfs-progs
+exfat-utils
+f2fs-tools
+ntfs-3g
+reiserfsprogs
+xfsprogs
+gpart
+mtools
+parted
 xorg-server
 xorg-xinit
 xorg-utils
