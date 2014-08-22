@@ -57,6 +57,7 @@ xfsprogs
 gpart
 mtools
 parted
+gjs
 xorg-server
 xorg-xinit
 xorg-utils
