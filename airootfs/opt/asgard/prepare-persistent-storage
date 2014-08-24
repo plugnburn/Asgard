@@ -1,0 +1,21 @@
+#!/bin/bash
+ASGLABEL="ASGARDPERS"
+CURPART=$(lsblk -l -o NAME,MOUNTPOINT|grep bootmnt|cut -d ' ' -f 1)
+CURSDISK="$(echo $CURPART|grep -Po '\D+')"
+CURDISK="/dev/$CURSDISK"
+CURPARTNUM="$(echo $CURPART|grep -Po '\d+')"
+TARGETPART="${CURSDISK}$(($CURPARTNUM + 1))"
+STARTSEC=$(($(echo $(fdisk -l $CURDISK |grep $CURPART)|cut -d ' ' -f 5)+1))
+ENDSEC=$(($(fdisk -l $CURDISK|grep -Po '\d+ sectors'|cut -d ' ' -f 1)-1))
+SIZE=$(($ENDSEC - $STARTSEC))
+DUMPFILE="/tmp/ppsdump${RANDOM}"
+echo "Creating persistent storage for Asgard on /dev/${TARGETPART}..."
+sfdisk -d $CURDISK > $DUMPFILE
+TARGETLINE="/dev/${TARGETPART} : start=${STARTSEC}, size=${SIZE}, Id=0c"
+SEDEXP="/${TARGETPART}/c\\${TARGETLINE}"
+sed -i "$SEDEXP" $DUMPFILE
+sfdisk -q --no-reread -R --force $CURDISK < $DUMPFILE >/dev/null 2>&1
+partprobe >/dev/null 2>&1
+mkfs.vfat -n $ASGLABEL /dev/$TARGETPART >/dev/null 2>&1
+rm $DUMPFILE
+echo "Persistent storage created on the partition /dev/${TARGETPART}, label ${ASGLABEL}. Please reboot Asgard to start using it"
