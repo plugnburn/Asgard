@@ -23,4 +23,3 @@ systemctl set-default multi-user.target
 
 ln -s /opt/asgard/vmusic /usr/bin/vmusic
 ln -s /opt/asgard/watchcoder /usr/bin/watchcoder
-ln -s /opt/asgard/prepare-persistent-storage /usr/bin/prepare-persistent-storage
