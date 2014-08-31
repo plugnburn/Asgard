@@ -1,0 +1,28 @@
+#!/bin/bash
+pushd "$(dirname $0)" > /dev/null
+SCRIPTDIR="$(pwd)"
+popd > /dev/null
+VER="asgard-RC3"
+ISOFILE="${VER}.iso"
+IMGFILE="${VER}.img"
+FULLISOFILE="${SCRIPTDIR}/out/${ISOFILE}"
+FULLIMGFILE="${SCRIPTDIR}/out/${IMGFILE}"
+IMGTMPDIR="/tmp/asgimg${RANDOM}"
+ISOTMPDIR="/tmp/asgiso${RANDOM}"
+mkdir -p "${SCRIPTDIR}/out" "$ISOTMPDIR" "$IMGTMPDIR"
+echo "Creating image stub..."
+dd if=/dev/zero of=${FULLIMGFILE} bs=1M count=950 >/dev/null 2>&1
+mkfs.vfat -F32 -n Asgard ${FULLIMGFILE} >/dev/null 2>&1
+echo "Copying image contents..."
+mount -o loop $FULLISOFILE $ISOTMPDIR >/dev/null 2>&1
+mount $FULLIMGFILE $IMGTMPDIR
+cp -a ${ISOTMPDIR}/* ${IMGTMPDIR}/
+sync
+cp -r /usr/lib/syslinux/bios/*.c32 ${IMGTMPDIR}/asgard/boot/syslinux/
+extlinux --install ${IMGTMPDIR}/asgard/boot/syslinux >/dev/null 2>&1
+sync
+echo "Cleaning up..."
+umount $IMGTMPDIR
+umount $ISOTMPDIR
+rm -rf $IMGTMPDIR $ISOTMPDIR
+echo "Image is ready at ${FULLIMGFILE}"
