@@ -11,12 +11,12 @@ Note that only safe mode will work properly when booting from hybrid ISO.
 To build the USB pendrive image, run `sudo ./mkusbimage` from the same directory. The image with `.img` extension will appear in the `out` directory.
 To rebuild the image, remove `work` and `out` dirs (`sudo rm -rf work out`) and run `sudo ./build.sh -v` and `sudo ./mkusbimage` again.
 
-*Note: The requirement to run the script as root is to make sure all the permissions are intact inside the built iso image.*
+*Note: The requirement to run the script as root is to make sure all the permissions are intact inside the built image.*
 
 Image format
 ------------
-Asgard bootable images are hybrid ISO images that can be burned onto CD/DVD discs and a flash drive (as the main target). 
-To write the image onto a flash drive, use `dd` command: `dd if=/path/to/asgard.iso of=/dev/<your_drive> bs=2M`, where your_drive is the name of your flash drive device (`sdb`, `sdc` etc)
+Asgard bootable images are hybrid ISO images (the only option before RC3) and USB drive images (default and recommended option starting with RC3) that can be burned onto CD/DVD discs and a flash drive (as the main target). 
+To write the image onto a flash drive, use `dd` command: `dd if=/path/to/asgard.img of=/dev/<your_drive> bs=2M`, where your_drive is the name of your flash drive device (`sdb`, `sdc` etc)
 
 Dependencies
 ------------
