@@ -5,9 +5,11 @@ Overview
 --------
 This repo holds an `archiso` profile for Asgard, as well as the recent ready RC images. 
 To download a ready RC image, go to [Releases] (https://github.com/plugnburn/Asgard/releases). 
-To build the bleeding-edge hybrid image of Asgard without waiting for the next RC or release, clone the repo, go to the directory, run `sudo ./dwbbuild` and `sudo ./build.sh -v`. 
+To build the bleeding-edge USB image of Asgard without waiting for the next RC or release, clone the repo, go to the directory, run `sudo ./dwbbuild` and `sudo ./build.sh -v`. 
 After the build completes, the hybrid ISO image will appear in the `out` directory.
-To rebuild the image, remove `work` and `out` dirs (`sudo rm -rf work out`) and run `sudo ./build.sh -v` again.
+Note that only safe mode will work properly when booting from hybrid ISO.
+To build the USB pendrive image, run `sudo ./mkusbimage` from the same directory. The image with `.img` extension will appear in the `out` directory.
+To rebuild the image, remove `work` and `out` dirs (`sudo rm -rf work out`) and run `sudo ./build.sh -v` and `sudo ./mkusbimage` again.
 
 *Note: The requirement to run the script as root is to make sure all the permissions are intact inside the built iso image.*
 
@@ -43,3 +45,10 @@ Terminal mode
 Starting with RC2, Asgard features a full-fledged terminal emulator that can be called and hidden via F12 keybinding.
 In this terminal, you can use Bash shell, `dvtm` terminal multiplexer and Nano text editor that supports syntax highlighting for all popular programming and scripting languages.
 Despite the main orientation of Asgard is, and will remain, the browser-based experience, the terminal may serve as an additional feature for more general purpose use.
+
+Persistent storage and the safe mode
+------------------------------------
+Starting with RC3 and the trunk as of 11 September, 2014, Asgard moves from hybrid ISO to USB drive image as its main format and features persistent storage on the drive as the default mode of operation. 
+That is, all changes you made remain on your drive, but the system image remains completely intact. 
+To boot the pure, stock Asgard image, choose "Boot Asgard in safe mode" in the boot menu. All changes you make in the safe mode will be ignored unless you manually mount any partition to fix anything.
+So, the safe mode is useful for recovery purposes.

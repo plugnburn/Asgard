@@ -33,7 +33,7 @@ echo "Hidden=yes">>$PROF
 fi
 echo "IP=dhcp">>$PROF
 netctl stop-all
-netctl start $PROFNAME
+/usr/lib/network/network start $PROFNAME
 echo -n "Connected to $CONNTYPE interface $IFACE"
 if [ $CONNTYPE == "wireless" ]; then
 echo -n ", SSID $SSID"

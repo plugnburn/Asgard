@@ -12,7 +12,8 @@ ISOTMPDIR="/tmp/asgiso${RANDOM}"
 mkdir -p "${SCRIPTDIR}/out" "$ISOTMPDIR" "$IMGTMPDIR"
 echo "Creating image stub..."
 dd if=/dev/zero of=${FULLIMGFILE} bs=1M count=950 >/dev/null 2>&1
-mkfs.vfat -F32 -n Asgard ${FULLIMGFILE} >/dev/null 2>&1
+#mkfs.vfat -F32 -n Asgard ${FULLIMGFILE} >/dev/null 2>&1
+mkfs.ext4 -L Asgard -O ^has_journal ${FULLIMGFILE} >/dev/null 2>&1
 echo "Copying image contents..."
 mount -o loop $FULLISOFILE $ISOTMPDIR >/dev/null 2>&1
 mount $FULLIMGFILE $IMGTMPDIR
