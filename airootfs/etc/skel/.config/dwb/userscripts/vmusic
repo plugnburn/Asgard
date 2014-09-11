@@ -1,4 +1,3 @@
 #!/bin/bash
-CMD=${DWB_ARGUMENT}
-RES=$(vmusic $CMD)
+RES=$(eval "vmusic ${DWB_ARGUMENT}")
 echo 'eval io.notify("'"$RES"'")' > ${DWB_FIFO}
