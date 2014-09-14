@@ -1,3 +1,5 @@
+sudo mount / -o remount,rw
+amixer sset Master unmute
 xsetroot -cursor_name left_ptr &
 ROOTSZ=$(xwininfo -root|grep geometry|grep -Po \\d+x\\d+)
 ROOTW=$(echo $ROOTSZ|cut -d x -f 1)

@@ -1,0 +1,32 @@
+# Licensed under GPLv3.
+# Ivan Shapovalov <intelfx100@gmail.com>
+# modded by plugnburn (http://github.com/plugnburn/)
+
+[Unit]
+Description=Xorg server on %I
+Documentation=man:Xorg(1)
+After=systemd-user-sessions.service
+
+Conflicts=getty@%i.service
+After=getty@%i.service
+
+[Service]
+User=asgard
+PAMName=login
+
+StandardOutput=tty
+StandardInput=tty-fail
+
+ExecStart=/usr/bin/xinit -- /usr/bin/X -nolisten tcp :0 vt${XDG_VTNR}
+Type=simple
+Restart=always
+RestartSec=0
+UtmpIdentifier=:0
+TTYPath=/dev/%I
+TTYReset=yes
+TTYVHangup=yes
+TTYVTDisallocate=yes
+IgnoreSIGPIPE=no
+
+[Install]
+WantedBy=graphical.target

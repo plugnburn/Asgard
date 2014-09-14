@@ -4,7 +4,7 @@ set -e -u
 
 iso_name=asgard
 iso_label="Asgard"
-iso_version="RC3"
+iso_version="RC4"
 install_dir=asgard
 work_dir=work
 out_dir=out
