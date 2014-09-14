@@ -25,4 +25,5 @@ ln -s /opt/asgard/vmusic /usr/bin/vmusic
 ln -s /opt/asgard/watchcoder /usr/bin/watchcoder
 
 rm -f /etc/systemd/system/getty.target.wants/getty@tty1.service
+mkdir -p /etc/systemd/system/graphical.target.wants
 ln -sf /etc/systemd/system/xorg@.service /etc/systemd/system/graphical.target.wants/xorg@tty1.service

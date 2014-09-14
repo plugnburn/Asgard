@@ -2,7 +2,7 @@
 pushd "$(dirname $0)" > /dev/null
 SCRIPTDIR="$(pwd)"
 popd > /dev/null
-VER="asgard-RC3"
+VER="asgard-RC4"
 ISOFILE="${VER}.iso"
 IMGFILE="${VER}.img"
 FULLISOFILE="${SCRIPTDIR}/out/${ISOFILE}"
