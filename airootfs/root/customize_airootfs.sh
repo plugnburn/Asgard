@@ -19,6 +19,8 @@ chmod 440 /etc/sudoers.d/g_wheel
 
 sed -i 's/#\(Storage=\)auto/\1none/' /etc/systemd/journald.conf
 
+rm -f /etc/systemd/system/multi-user.target.wants/remote-fs.target
+
 systemctl set-default multi-user.target
 
 ln -s /opt/asgard/vmusic /usr/bin/vmusic
