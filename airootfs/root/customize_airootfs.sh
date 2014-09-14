@@ -17,7 +17,7 @@ useradd -m -p "" -g users -G "adm,audio,floppy,log,network,rfkill,scanner,storag
 chmod 750 /etc/sudoers.d
 chmod 440 /etc/sudoers.d/g_wheel
 
-sed -i 's/#\(Storage=\)auto/\1volatile/' /etc/systemd/journald.conf
+sed -i 's/#\(Storage=\)auto/\1none/' /etc/systemd/journald.conf
 
 systemctl set-default multi-user.target
 
