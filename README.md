@@ -61,4 +61,4 @@ Just select it in the boot menu, wait some time (longer than usual) because the 
 Aside from lower system RAM available (system image takes ~500 MB of RAM), the only limitation of this mode is inability to use any persistent storage, so consider this another type of safe mode.
 The advantages are, however, faster operation (everything is done in RAM) and no traces left on any drive after system shutdown (which is a useful thing in some cases).
 
-[i]Note: in Asgard RC3 there is no separate boot menu item for this mode but you can choose "Boot Asgard in safe mode", press Tab and append the `copytoram` word to the kernel boot string.[/i]
+_Note: in Asgard RC3 there is no separate boot menu item for this mode but you can choose "Boot Asgard in safe mode", press Tab and append the `copytoram` word to the kernel boot string._
