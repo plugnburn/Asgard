@@ -52,3 +52,13 @@ Starting with RC3 and the trunk as of 11 September, 2014, Asgard moves from hybr
 That is, all changes you made remain on your drive, but the system image remains completely intact. 
 To boot the pure, stock Asgard image, choose "Boot Asgard in safe mode" in the boot menu. All changes you make in the safe mode will be ignored unless you manually mount any partition to fix anything.
 So, the safe mode is useful for recovery purposes.
+
+Boot-to-RAM mode
+----------------
+If you don't care about bootup speed and persistent storage, but do care of fast operation, want to save your flash or hard drive from wearing out and have enough RAM (1 GB is the necessary minimum), 
+here are some good news for you. Starting with RC4 early trunks, the third boot mode of Asgard is available: Boot to RAM.
+Just select it in the boot menu, wait some time (longer than usual) because the entire system image is copied to RAM, and then boot proceeds as usual, but from RAM, and you can even remove your flash drive from the port.
+Aside from lower system RAM available (system image takes ~500 MB of RAM), the only limitation of this mode is inability to use any persistent storage, so consider this another type of safe mode.
+The advantages are, however, faster operation (everything is done in RAM) and no traces left on any drive after system shutdown (which is a useful thing in some cases).
+
+[i]Note: in Asgard RC3 there is no separate boot menu item for this mode but you can choose "Boot Asgard in safe mode", press Tab and append the `copytoram` word to the kernel boot string.[/i]
