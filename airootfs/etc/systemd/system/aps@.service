@@ -1,0 +1,12 @@
+[Unit]
+Description=APS (Asgard Parallel Startup)
+
+[Service]
+StandardOutput=tty
+StandardInput=tty-fail
+
+ExecStart=/opt/asgard/asgard-parallel-startup
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target

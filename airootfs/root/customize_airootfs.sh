@@ -26,5 +26,19 @@ systemctl set-default multi-user.target
 ln -s /opt/asgard/vmusic /usr/bin/vmusic
 ln -s /opt/asgard/watchcoder /usr/bin/watchcoder
 
+systemctl mask systemd-journald.service
+systemctl mask systemd-journal-catalog-update.service
+systemctl mask systemd-journal-flush.service
+systemctl mask systemd-journald-dev-log.socket
+systemctl mask systemd-journald.socket
+systemctl mask plymouth-start.service
+systemctl mask plymouth-quit-wait.service
+systemctl mask auditd.service
+systemctl mask logrotate.service
+systemctl mask logrotate.timer
+systemctl mask nss-user-lookup.target
+
 systemctl disable getty@tty1
+systemctl mask getty@tty1.service
 systemctl enable xorg@tty1
+systemctl enable aps@tty1

@@ -1,0 +1,4 @@
+#!/bin/bash
+#Asgard helper startup script for the tasks that don't require X
+mount / -o remount,rw &
+amixer sset Master unmute
